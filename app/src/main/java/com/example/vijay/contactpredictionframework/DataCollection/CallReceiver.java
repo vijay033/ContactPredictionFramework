@@ -62,7 +62,7 @@ public class CallReceiver extends PhonecallReceiver {
     private ReadWriteLock rwlock = new ReentrantReadWriteLock();
     private static ContentResolver contentResolver;
 
-    private static Context context;
+    private  Context context;
 
     public CallReceiver(){
         if(dataInterface == null) {
@@ -70,9 +70,9 @@ public class CallReceiver extends PhonecallReceiver {
         }
     }
 
-    public CallReceiver(Context context) {
+    public CallReceiver(Context ctx) {
 
-        this.context = context;
+        this.context = ctx;
         contentResolver = context.getContentResolver();
     }
 
@@ -137,7 +137,7 @@ public class CallReceiver extends PhonecallReceiver {
 
 
 
-    public final Handler mHandler = new Handler(){
+    public  final Handler mHandler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
@@ -167,6 +167,7 @@ public class CallReceiver extends PhonecallReceiver {
         dataInterface.setCallType(CallType);
         dataInterface.setPhoneNumber(contactNumber);
         dataInterface.setDuration(Duration);
+        this.context = ctx; /*Check the effect*/
         rwlock.writeLock().unlock();
 
     }
@@ -189,6 +190,7 @@ public class CallReceiver extends PhonecallReceiver {
         dataInterface.setCallType(CallType);
         dataInterface.setPhoneNumber(contactNumber);
         dataInterface.setDuration(Duration);
+        this.context = ctx; /*Check the effect*/
         rwlock.writeLock().unlock();;
     }
 
@@ -209,6 +211,8 @@ public class CallReceiver extends PhonecallReceiver {
         dataInterface.setLat(lati);
         dataInterface.setLon(longi);
         dataInterface.setPackage(topPackage);
+        this.context = ctx; /*Check the effect*/
+
         rwlock.writeLock().unlock();;
 
         if(!dataInterface.getContactName().equals("Unknown number")){ /*Don't Update Training data having no contact DB entry*/
@@ -235,6 +239,8 @@ public class CallReceiver extends PhonecallReceiver {
         dataInterface.setLat(lati);
         dataInterface.setLon(longi);
         dataInterface.setPackage(topPackage);
+        this.context = ctx; /*Check the effect*/
+
         rwlock.writeLock().unlock();
 
         if(!dataInterface.getContactName().equals("Unknown number")){ /*Don't Update Training data having no contact DB entry*/
@@ -261,6 +267,8 @@ public class CallReceiver extends PhonecallReceiver {
         dataInterface.setCallType(CallType);
         dataInterface.setPhoneNumber(contactNumber);
         dataInterface.setDuration(Duration);
+        this.context = ctx; /*Check the effect*/
+
         rwlock.writeLock().unlock();
         Toast.makeText(ctx, "onMissedCall" , Toast.LENGTH_SHORT).show();
         if(!dataInterface.getContactName().equals("Unknown number")){ /*Don't Update DB having no contact DB entry*/
