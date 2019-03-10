@@ -32,9 +32,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <receiver android:name=".DataCollection.CallReceiver"
-            android:enabled="true"
-         android:exported="true">
+        <receiver android:name=".DataCollection.CallReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.PHONE_STATE" />
             </intent-filter>
@@ -46,7 +44,6 @@
         <provider
             android:authorities="com.example.vijay.contactpredictionframework"
             android:name=".DataBaseProvider.ContactFeatureProvider"
-            android:enabled="true"
             android:exported="true"/>
     </application>
 
