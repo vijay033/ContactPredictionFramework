@@ -1,5 +1,6 @@
 # ContactPredictionFramework
 # Refer for description : https://github.com/vijay033/ContactPrediction
+# Refer training and prediction logic : https://github.com/vijay033/ContactSuggestionFramework
 # Reference Links
 https://github.com/AnilDeshpande/DBDemoToDoList
 
