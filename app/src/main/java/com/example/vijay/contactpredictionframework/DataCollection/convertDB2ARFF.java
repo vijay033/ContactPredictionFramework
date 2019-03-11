@@ -100,7 +100,7 @@ public class convertDB2ARFF {
             String db_packageName;
 
             trainingset = new Instances("training",attributeArrayList,NUMBEROFINSTANCES);
-//            trainingset.setClassIndex(trainingset.numAttributes()-1);
+            trainingset.setClassIndex(trainingset.numAttributes()-1);
 
             while (cursor.moveToNext()) {
                 rwlock.readLock().lock();
